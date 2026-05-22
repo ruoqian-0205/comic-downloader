@@ -343,6 +343,8 @@ async def normal_download(browser):
     while current_url:
         batch_count = 0
         while batch_count < BATCH_SIZE and current_url:
+            # 每话开始前先保存进度，防止中途崩溃导致进度丢失
+            save_progress(chapter_num, current_url)
             try:
                 next_url, skipped = await download_chapter_images(
                     browser, current_url, chapter_num, collect_next=True
@@ -350,7 +352,6 @@ async def normal_download(browser):
             except ChapterLoadError as e:
                 print(f"\n❌ {e}")
                 print("保存进度并退出。")
-                save_progress(chapter_num, current_url)
                 return
 
             chapter_num += 1
