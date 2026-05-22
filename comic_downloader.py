@@ -158,7 +158,7 @@ async def scroll_and_collect_urls(page, total_images):
     collected = set()
     ordered_urls = []
     scroll_step = 300
-    max_scrolls = 200
+    max_scrolls = 1000
     scroll_count = 0
     no_new_count = 0
     max_no_new = 5
