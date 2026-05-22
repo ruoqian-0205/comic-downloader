@@ -134,7 +134,7 @@ python merge_to_pdf.py
 如果遇到图片漏抓，可以打开 `comic_downloader.py`，找到 `scroll_and_collect_urls` 函数中的：
 
 - `scroll_step = 300`（每次滚动的像素，减小可提高触发概率）
-- `await page.wait_for_timeout(500)`（滚动后等待时间，增加可给网络更多缓冲）
+- `await page.wait_for_timeout(500)`（滚动后等待时间，增加可给网络更多缓冲，减少可以大幅提升下载速度但会增加漏抓几率）
 
 根据实际情况微调这两个值即可。
 
